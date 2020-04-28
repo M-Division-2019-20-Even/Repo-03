@@ -1,0 +1,135 @@
+#include<Servo.h>
+
+Servo myservo3,myservo4,myservo6,myservo7;
+
+char SongA[] = {'c','c','G','G','A','A','G','e','F','F','E','E','D','D','c','e','G','G','F','F','E','E','D','e','G','G','F','F','E','E','D','e','c','c','G','G','A','A','G','e','F','F','E','E','D','D','c'};
+int size_SongA=47;
+int i=0;
+
+int ledPin_c = 13;
+int ledPin_D = 12;
+int ledPin_E = 11;
+int ledPin_F = 10;
+int ledPin_G = 9;
+int ledPin_A = 8;
+int ledPin_B = 5;
+int ledPin_C = 2;
+
+void setup() {
+  myservo3.attach(3);
+  myservo4.attach(4);
+  myservo6.attach(6);
+  myservo7.attach(7);
+  
+  pinMode(ledPin_c, OUTPUT);
+  pinMode(ledPin_D, OUTPUT);
+  pinMode(ledPin_E, OUTPUT);
+  pinMode(ledPin_F, OUTPUT);
+  pinMode(ledPin_G, OUTPUT);
+  pinMode(ledPin_A, OUTPUT);
+  pinMode(ledPin_B, OUTPUT);
+  pinMode(ledPin_C, OUTPUT);
+}
+
+void looper(char x){
+  
+  
+  
+  switch(x){
+    case 'c':	//myservo7.write(45);			//LowNoteC
+    			//digitalWrite(ledPin_c, HIGH);
+    			tone(13,240*3);
+    			delay(200);
+    			noTone(13);
+    			delay(200);
+    			//digitalWrite(ledPin_c, LOW);
+    			break;
+    case 'D':	//myservo7.write(75);
+    			//digitalWrite(ledPin_D, HIGH);
+    			tone(12,270*3);
+    			delay(200);
+    			noTone(12);
+    			delay(200);
+    			//digitalWrite(ledPin_D, LOW);
+    			break;
+    case 'E':	//myservo7.write(105);
+    			//digitalWrite(ledPin_E, HIGH);
+    			tone(11,300*3);
+    			delay(200);
+    			noTone(11);
+    			delay(200);
+    			//digitalWrite(ledPin_E, LOW);
+    			break;
+    case 'F':	//myservo7.write(135);
+    			//digitalWrite(ledPin_F, HIGH);
+    			tone(10,320*3);
+    			delay(200);
+    			noTone(10);
+    			delay(200);
+    			//digitalWrite(ledPin_F, LOW);
+    			break;
+    case 'G':	//myservo6.write(45);
+    			//digitalWrite(ledPin_G, HIGH);
+    			tone(9,360*3);
+    			delay(200);
+    			noTone(9);
+    			delay(200);
+    			//digitalWrite(ledPin_G, LOW);
+    			break;
+    case 'A':	//myservo6.write(75);
+    			//digitalWrite(ledPin_A, HIGH);
+    			tone(8,400*3);
+    			delay(200);
+    			noTone(8);
+    			delay(200);
+    			//digitalWrite(ledPin_A, LOW);
+    			break;
+    case 'B':	//myservo6.write(105);
+    			//digitalWrite(ledPin_B, HIGH);
+    			tone(5,460*3);
+    			delay(200);
+    			noTone(5);
+    			delay(200);
+    			//digitalWrite(ledPin_B, LOW);
+    			break;
+    case 'C':   //myservo6.write(500);
+    			//digitalWrite(ledPin_C, HIGH);
+    			tone(2,500*3);
+    			delay(200);
+    			noTone(2);
+    			delay(200);
+    			//digitalWrite(ledPin_C, LOW);
+    			break;
+    default:	delay(200);
+    			break;
+  }
+  if(x=='c' || x=='D' || x =='E' || x=='F')
+  {
+    myservo4.write(30);
+  }
+  if(x=='G' || x=='A' || x=='B' || x=='C')
+  {
+    myservo3.write(30);
+  }
+  
+  
+  //delay(1000);
+  myservo3.write(90);
+  myservo4.write(90);
+  myservo6.write(90);
+  myservo7.write(90);
+  //delay(1000);
+  
+ 
+}
+
+void loop()
+{ 
+  
+  for(;i<size_SongA;i++)
+  {
+    looper(SongA[i]);
+  }
+  //delay(1000);
+  i=0;
+}
